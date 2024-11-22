@@ -19,7 +19,12 @@
                 <li class="nav-item">
                     <a class="nav-link
     ${activePage
-            eq "Cars" ? 'active' : ''}" href="${pageContext.request.contextPath}/Cars ">cars</a>
+            eq "Cars" ? 'active' : ''}" href="${pageContext.request.contextPath}/Cars">Cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link
+    ${activePage
+            eq "user" ? 'active' : ''}" href="${pageContext.request.contextPath}/Users">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>

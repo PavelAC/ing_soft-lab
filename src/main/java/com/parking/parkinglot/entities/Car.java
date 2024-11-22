@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Car {
     private Long id;
 
-    private User user;
+    private User owner;
 
     public void setId(Long id) {
         this.id = id;
@@ -26,11 +26,11 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {
-        return user;
+        return owner;
     }
 
     public void setUser(User user) {
-        this.user = user;
+        this.owner = user;
     }
 
     @Column(name = "parking_spot")
@@ -49,5 +49,15 @@ public class Car {
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

@@ -11,9 +11,7 @@ public class User {
 
     private Long id;
 
-    private User car;
 
-    private Car owner;
 
     public void setId(Long id) {
         this.id = id;
@@ -58,16 +56,6 @@ public class User {
     }
 
     private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    public Car getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Car owner) {
-        this.owner = owner;
-    }
 
 
     public String getPassword() {
