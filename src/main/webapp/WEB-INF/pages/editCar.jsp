@@ -16,7 +16,7 @@
     <h4 class="mb-3">Edit your Car</h4>
     <form class="needs-validation" novalidate method="POST" action="${pageContext.request.contextPath}/EditCar">
     <div class="row g-3">
-        <div class="col-sm-6">
+        <div class="col-md-6 mb-3">
             <label for="license_plate" class="form-label">Licens plate</label>
             <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder="" value="${car.licensePlate}" required>
             <div class="invalid-feedback">
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-md-6 mb-3">
             <label for="parking_spot" class="form-label">Parking Spot</label>
             <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder="" value="${car.parkingSpot}" required>
             <div class="invalid-feedback">
@@ -34,10 +34,10 @@
 
         <div class="col-md-5">
             <label for="owner_id" class="form-label">Owner_Id</label>
-            <select class="form-select" id="owner_id" name="owner_id" required>
+            <select class="custom-select d-block w-100" id="owner_id" name="owner_id" required>
                 <option value="">Choose...</option>
                 <c:forEach var="user" items="${users}" varStatus="status">
-                    <option value="${user.id}" ${car.owner eq user.username ? 'selected' : ''}>
+                    <option value="${user.id}" ${car.ownerName eq user.username ? 'selected' : ''}>
                             ${user.username}
                     </option>
                 </c:forEach>
@@ -48,6 +48,6 @@
         </div>
         <hr class="mb-4">
         <input type="hidden" name="car_id" value="${car.id}" />
-<%--        <button type="submit" class="btn btn-primary btn-lg">Submit</button>--%>
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
     </div>
 </t:pageTemplate>

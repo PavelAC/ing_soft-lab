@@ -34,11 +34,11 @@ public class EditCar extends HttpServlet {
         CarDto car = carsBean.findByid(carId);
         request.setAttribute("car", car);
 
-        request.getRequestDispatcher("/editCar.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/editCar.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String licensePlate = request.getParameter("license_plate");
         String parkingSpot = request.getParameter("parking_spot");
         Long userId = Long.parseLong(request.getParameter("owner_id"));
