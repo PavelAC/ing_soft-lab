@@ -30,7 +30,7 @@ public class Cars extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse
             response) throws ServletException, IOException {
-        String[] carIdsAsString = request.getParameterValues("carIds");
+        String[] carIdsAsString = request.getParameterValues("car_ids");
         if (carIdsAsString != null) {
             List<Long> carIds = new ArrayList<>();
             for (String carIdAsString : carIdsAsString) {

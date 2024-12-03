@@ -61,9 +61,9 @@ public class CarsBean {
         return new CarDto(car.getId(), car.getLicensePlate(), car.getParkingSpot(), car.getUser().getUsername());
     }
 
-    public void updateCar(Long id, String licensePlate, String parkingSpot, Long userId){
+    public void updateCar(Long carId, String licensePlate, String parkingSpot, Long userId){
         LOG.info("Update car");
-        Car car = entityManager.find(Car.class, id);
+        Car car = entityManager.find(Car.class, carId);
         car.setLicensePlate(licensePlate);
         car.setParkingSpot(parkingSpot);
 
@@ -75,7 +75,7 @@ public class CarsBean {
         car.setOwner(user);
     }
 
-    public void deleteCarsByIds(Collection<Long> carIds){
+    public void deleteCarsByIds(List<Long> carIds){
         LOG.info("Delete cars by ids");
         for (Long carId : carIds){
             Car car = entityManager.find(Car.class, carId);
