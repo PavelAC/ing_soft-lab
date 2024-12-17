@@ -6,14 +6,14 @@ import com.parking.parkinglot.ejb.CarsBean;
 import com.parking.parkinglot.ejb.UserBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.annotation.*;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.util.List;
 
+@ServletSecurity(value = @HttpConstraint(rolesAllowed =
+        {"WRITE_CARS"}))
 
 @WebServlet(name = "EditCar", value = "/EditCar")
 public class EditCar extends HttpServlet {
@@ -42,7 +42,7 @@ public class EditCar extends HttpServlet {
         String licensePlate = request.getParameter("license_plate");
         String parkingSpot = request.getParameter("parking_spot");
         Long userId = Long.parseLong(request.getParameter("owner_id"));
-        Long carId = Long.parseLong(request.getParameter("car_id"));
+        Long carId = Long.parseLong(request.getParameter("id"));//inital era car_id;
 
         carsBean.updateCar(carId, licensePlate,parkingSpot, userId);
 
