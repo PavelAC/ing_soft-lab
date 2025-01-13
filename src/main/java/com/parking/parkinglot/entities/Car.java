@@ -23,6 +23,15 @@ public class Car {
 
     private String parkingSpot;
 
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    public CarPhoto getPhoto() {return photo;}
+
+    public void setPhoto(CarPhoto photo) {
+        this.photo = photo;
+    }
+
+    private CarPhoto photo;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     public User getUser() {

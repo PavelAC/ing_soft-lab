@@ -66,4 +66,13 @@ public class UserBean {
             em.persist(userGroup);
         }
     }
+
+    public Collection<String> findUsernamesByUserIds(Collection<Long> userIds) {
+        LOG.info("findUserByUsername");
+        List<String> usernames =
+                em.createQuery("SELECT u.username FROM User u WHERE u.id IN :userIds",String.class)
+                        .setParameter("userIds",userIds)
+                        .getResultList();
+        return usernames;
+    }
 }
