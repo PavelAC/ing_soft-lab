@@ -1,4 +1,4 @@
-package com.parking.parkinglot;
+package com.parking.parkinglot.servlets.cars;
 
 import com.parking.parkinglot.common.CarDto;
 import com.parking.parkinglot.ejb.CarsBean;
@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 @MultipartConfig
-@WebServlet(name = "AddCarPhoto.", value = "/AddCarPhoto.")
+@WebServlet(name = "AddCarPhoto", value = "/AddCarPhoto")
 public class AddCarPhoto extends HttpServlet {
 
     @Inject
