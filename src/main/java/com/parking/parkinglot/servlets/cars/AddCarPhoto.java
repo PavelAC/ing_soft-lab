@@ -22,7 +22,7 @@ public class AddCarPhoto extends HttpServlet {
         CarDto car = carsBean.findByid(carId);
         request.setAttribute("car", car);
 
-        request.getRequestDispatcher("/addcarphoto.jsp").forward(request, response);
+        request.getRequestDispatcher("/addCarPhoto.jsp").forward(request, response);
     }
     @Override
     protected void doPost (HttpServletRequest request, HttpServletResponse

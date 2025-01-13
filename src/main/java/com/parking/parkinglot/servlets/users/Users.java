@@ -36,7 +36,7 @@ public class Users extends HttpServlet{
                 request.setAttribute("invoices", usernames);
             }
 
-            request.getRequestDispatcher("/WEB-INF/pages/user.jsp").forward(request,response);
+            request.getRequestDispatcher("/WEB-INF/pages/users/user.jsp").forward(request,response);
     }
 
         @Override
