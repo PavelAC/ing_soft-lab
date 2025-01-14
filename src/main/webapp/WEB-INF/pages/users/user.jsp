@@ -17,7 +17,7 @@
     <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
         <a class="btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddUser">Add User</a>
     </c:if>
-        <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+        <c:if test="${pageContext.request.isUserInRole('INVOICING')}">
         <button class="btn btn-secondary" type="submit">Invoice</button>
         </c:if>
     <c:forEach var="user" items="${users}">
@@ -33,6 +33,11 @@
             <div class="col">
                     ${user.email}
             </div>
+            <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+                <div class="col">
+                    <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditUser?id=${user.id}">Edit User</a>
+                </div>
+            </c:if>
         </div>
     </c:forEach>
     </form>

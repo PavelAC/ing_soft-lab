@@ -1,6 +1,7 @@
 package com.parking.parkinglot.ejb;
 
 import com.parking.parkinglot.common.UserDto;
+import com.parking.parkinglot.entities.Car;
 import com.parking.parkinglot.entities.User;
 import com.parking.parkinglot.entities.UserGroup;
 import jakarta.ejb.EJBException;
@@ -74,5 +75,15 @@ public class UserBean {
                         .setParameter("userIds",userIds)
                         .getResultList();
         return usernames;
+    }
+    public void updateUser(Long id, String username, String email, String password) {
+        LOG.info("updateUser");
+        User user = em.find(User.class, id);
+        if (user == null) {
+            throw new EJBException("User not found");
+        }
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPassword(passwordBean.convertToSha256(password));
     }
 }

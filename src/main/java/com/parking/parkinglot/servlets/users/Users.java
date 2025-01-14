@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@DeclareRoles({"READ_USERS", "WRITE_USERS"})
+@DeclareRoles({"READ_USERS", "WRITE_USERS","INVOICING"})
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
+        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed =
+                {"WRITE_CARS","INVOICING"})})
 
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet{
@@ -28,7 +31,9 @@ public class Users extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             List<UserDto> users = userBean.findAllUsers();
-            request.setAttribute("users", users);
+            if (request.isUserInRole("INVOICING")) {
+                request.setAttribute("users", users);
+            }
             request.setAttribute("activePage", "Users");
 
             if (!invoiceBean.getUserIds().isEmpty()) {
